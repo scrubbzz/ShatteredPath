@@ -12,7 +12,7 @@ public class ShooterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class ShooterManager : MonoBehaviour
             RaycastHit hitInfo;
             if(Physics.Raycast(ray, out hitInfo, 1000))
             {
-                shootDirection = hitInfo.point - this.transform.position;
+                shootDirection = (hitInfo.point - this.transform.position).normalized;
                 ShootBall(shootDirection);
             }
         }

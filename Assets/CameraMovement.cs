@@ -23,9 +23,6 @@ public class CameraMovement : MonoBehaviour
     }
     public void MoveCamera(int moveSpeed)
     {
-        verticalV = rb.velocity.y;
-        verticalV = 0;
-
-        rb.velocity = new Vector3(0, verticalV, moveSpeed * Time.deltaTime);
+        rb.velocity = new Vector3(0, 0, moveSpeed);
     }
 }
