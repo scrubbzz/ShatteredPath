@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3237081911286935581}
   - component: {fileID: 3237081911286935650}
   - component: {fileID: 3237081911286935651}
+  - component: {fileID: 1948017974431415909}
   m_Layer: 0
   m_Name: Glass
   m_TagString: Glass
@@ -97,3 +98,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1948017974431415909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237081911286935648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b281b939949d41961056c9609ed03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeSize: 0.2
+  cubesInRow: 5
+  explosionForce: 50
+  explosionRadius: 4
+  explosionUpward: 0.4
+  brokenGlass:
+  - {fileID: 8435203111854316781, guid: e963c8b04129dee4787eeff00349eaf2, type: 3}
+  - {fileID: 1773118353757120505, guid: 63caab9f8952da44da40321ee181f3d5, type: 3}
+  audioSource: {fileID: 0}
+  soundEffects: []
