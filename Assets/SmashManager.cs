@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmashManager : MonoBehaviour, IAudible
+public class SmashManager : MonoBehaviour, IAudible, ISmashable
 {
     public float cubeSize = 0.2f;
     public int cubesInRow = 5;
@@ -36,7 +36,7 @@ public class SmashManager : MonoBehaviour, IAudible
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
    /* private void OnTriggerEnter(Collider other)
@@ -51,8 +51,8 @@ public class SmashManager : MonoBehaviour, IAudible
     {
         if (collision.gameObject.tag == "Ball")
         {
-            //explode();
-            SmashGlass();
+            explode();
+            SmashTheGlass();
             PlaySoundEffect();
         }
     }
@@ -108,20 +108,23 @@ public class SmashManager : MonoBehaviour, IAudible
         piece.GetComponent<Rigidbody>().mass = cubeSize;
     }
 
-    void SmashGlass()
-    {
-        gameObject.SetActive(false);
-
-        int randomIndex = Random.Range(0, brokenGlass.Length - 1);
-        GameObject smashedGlass = Instantiate(brokenGlass[randomIndex], gameObject.transform.position, Quaternion.identity);
-        if(smashedGlass != null)
-        {
-            Debug.Log("Smahsed Glass using element: " + randomIndex);
-        }
-    }
 
     public void PlaySoundEffect()
     {
         //audioSource.PlayOneShot(soundEffects[Random.Range(0, soundEffects.Length - 1)]);
+    }
+
+
+    public void SmashTheGlass()
+    {
+
+        gameObject.SetActive(false);
+
+        int randomIndex = Random.Range(0, brokenGlass.Length - 1);
+        GameObject smashedGlass = Instantiate(brokenGlass[randomIndex], gameObject.transform.position, Quaternion.identity);
+        if (smashedGlass != null)
+        {
+            Debug.Log("Smahsed Glass using element: " + randomIndex);
+        }
     }
 }
