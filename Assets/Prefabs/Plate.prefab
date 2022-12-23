@@ -105,11 +105,6 @@ MonoBehaviour:
   explosionUpward: 0.4
   brokenGlass:
   - {fileID: 2765016318888983483, guid: e74a882b653a7824eacff45add620d85, type: 3}
-  audioSource: {fileID: 0}
-  soundEffects:
-  - {fileID: 8300000, guid: 4a6ad79c0ba4fe244ba92270a4765a94, type: 3}
-  - {fileID: 8300000, guid: 29291427a369d2841a74cd8fad137a0d, type: 3}
-  - {fileID: 8300000, guid: 78a7c1c3c23f9324481575236aa61ab1, type: 3}
 --- !u!82 &3771403966035887725
 AudioSource:
   m_ObjectHideFlags: 0
