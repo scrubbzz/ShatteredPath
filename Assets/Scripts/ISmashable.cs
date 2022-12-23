@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISmashable 
 {
-    public abstract void SmashTheGlass();
+    public abstract void SmashTheGlass(GameObject collisionGameobject);
 }
