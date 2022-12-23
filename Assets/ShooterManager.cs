@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ShooterManager : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class ShooterManager : MonoBehaviour
 
     public Vector3 targetPosition;
     public Vector3 shootDirection;
+
+    [Header("Ammunition")]
+    public int ammo = 20;
+    public TextMeshProUGUI ammoText;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +30,13 @@ public class ShooterManager : MonoBehaviour
         {
             ShootBall();
         }*/
-        CheckShootDirection();
+        Shoot();
+        
     }
-    public void ShootBall(Vector3 shootDir)
-    { 
+    public void InstantiateBall(Vector3 shootDir)
+    {
+        ammo--;
+        ammoText.text = ammo.ToString();    
         var ball = Instantiate(ballPPrefab, this.transform.position + new Vector3(0, 0, 5), Quaternion.identity);
         var ballBody = ball.GetComponent<Rigidbody>();
 
@@ -37,7 +46,7 @@ public class ShooterManager : MonoBehaviour
             Debug.Log("Force Added");
         }
     }
-    public void CheckShootDirection()
+    public bool Shoot()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -48,8 +57,13 @@ public class ShooterManager : MonoBehaviour
             if(Physics.Raycast(ray, out hitInfo, 1000))
             {
                 shootDirection = (hitInfo.point - this.transform.position).normalized;
-                ShootBall(shootDirection);
+                InstantiateBall(shootDirection);
             }
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

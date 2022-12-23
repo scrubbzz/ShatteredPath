@@ -2,20 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion : MonoBehaviour, ISmashable
 {
     public float explosionForce;
     public float explosionRadius;
 
     private void Awake()
     {
-        Explode();
+        explosionForce = 750;
+        explosionRadius = 10;
+        SmashTheGlass();
     }
     private void Update()
     {
         
     }
-    public void Explode()
+
+    public void SmashTheGlass()
     {
         foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
         {

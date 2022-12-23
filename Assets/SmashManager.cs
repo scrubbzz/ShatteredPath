@@ -16,6 +16,8 @@ public class SmashManager : MonoBehaviour, IAudible, ISmashable
 
     [SerializeField] GameObject[] brokenGlass;
 
+    public ShooterManager shooterManager;
+
     // Use this for initialization
     void Start()
     {
@@ -26,6 +28,8 @@ public class SmashManager : MonoBehaviour, IAudible, ISmashable
         //use this value to create pivot vector)
         //cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
         cubesPivot = Vector3.one * cubesPivotDistance;
+        shooterManager = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ShooterManager>();
+
     }
 
     // Update is called once per frame
@@ -47,10 +51,18 @@ public class SmashManager : MonoBehaviour, IAudible, ISmashable
         if (collision.gameObject.tag == "Ball")
         {
             //explode();
-            SmashTheGlass(collision.gameObject);
+            SmashTheGlass();
 
             //PlaySoundEffect();
+            if(this.gameObject.tag == "AmmoGlass")
+            {
+                shooterManager.ammo += 5;
+                shooterManager.ammoText.text = shooterManager.ammo.ToString();
+                Debug.Log("YOU HIT AMMO");
+                Debug.Log("Ammo: " + shooterManager.ammo);
+            }
         }
+
     }
 
     public void explode()
@@ -113,25 +125,17 @@ public class SmashManager : MonoBehaviour, IAudible, ISmashable
     }
 
 
-    public void SmashTheGlass(GameObject collisionGameobject)
+    public void SmashTheGlass()
     {
-        print(collisionGameobject.name);
 
         int randomIndex = Random.Range(0, brokenGlass.Length - 1);
         GameObject smashedGlass = Instantiate(brokenGlass[randomIndex], gameObject.transform.position, Quaternion.identity);
-        foreach (Rigidbody shatteredGlassRB in smashedGlass.GetComponentsInChildren<Rigidbody>())
-        {
-            Vector3 force = (shatteredGlassRB.transform.position - collisionGameobject.transform.position).normalized * explosionForce;
-            //shatteredGlassRB.AddForce(-force);
-            //shatteredGlassRB.AddExplosionForce(explosionForce, collisionGameobject.transform.position ,explosionRadius);
-            //Destroy(shatteredGlassRB.gameObject);
-            print("force on " + shatteredGlassRB.gameObject.name);
-        }
         if (smashedGlass != null)
         {
             Debug.Log("Smahsed Glass using element: " + randomIndex);
         }
-
+        /*var child = gameObject.GetComponentInChildren<GameObject>();
+        child.transform.SetParent(null);*/
         gameObject.SetActive(false);
     }
 }
