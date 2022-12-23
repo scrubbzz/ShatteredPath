@@ -117,6 +117,7 @@ MonoBehaviour:
   explosionUpward: 0.4
   brokenGlass:
   - {fileID: 1331743662504803906, guid: fd54808041fbfde4a85c602faa3627aa, type: 3}
+  shooterManager: {fileID: 0}
 --- !u!1 &8638211654776802852
 GameObject:
   m_ObjectHideFlags: 0

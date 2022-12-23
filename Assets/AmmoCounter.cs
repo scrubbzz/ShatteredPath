@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public interface ISmashable 
+public class AmmoCounter : MonoBehaviour
 {
-    public abstract void SmashTheGlass();
+   
 }
