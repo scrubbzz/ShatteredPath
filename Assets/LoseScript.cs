@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoseScript : MonoBehaviour
 {
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Glass")
+        if (other.gameObject.tag == "Glass")
         {
             SceneManager.LoadScene("End");
         }
-    }   
-
+        
+    }
 }
