@@ -131,7 +131,8 @@ public class SmashManager : MonoBehaviour, IAudible, ISmashable
         {
             Debug.Log("Smahsed Glass using element: " + randomIndex);
         }
-
+        /*var child = gameObject.GetComponentInChildren<GameObject>();
+        child.transform.SetParent(null);*/
         gameObject.SetActive(false);
     }
 }
