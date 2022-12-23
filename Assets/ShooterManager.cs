@@ -6,6 +6,8 @@ public class ShooterManager : MonoBehaviour
 {
     [SerializeField] GameObject ballPPrefab;
     public int shootForce;
+    public AudioSource audioSource;
+    public AudioClip audioclip;
 
     public Vector3 targetPosition;
     public Vector3 shootDirection;
@@ -39,6 +41,7 @@ public class ShooterManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            audioSource.PlayOneShot(audioclip);
             Debug.Log("You shot");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
