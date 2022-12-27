@@ -66,7 +66,7 @@ public class SmashManager : MonoBehaviour, IAudible, ISmashable
     {
 
         int randomIndex = Random.Range(0, brokenGlass.Length - 1);
-        GameObject smashedGlass = Instantiate(brokenGlass[randomIndex], gameObject.transform.position, Quaternion.identity);
+        GameObject smashedGlass = Instantiate(brokenGlass[randomIndex], gameObject.transform.position, brokenGlass[randomIndex].transform.rotation);
         if (smashedGlass != null)
         {
             Debug.Log("Smahsed Glass using element: " + randomIndex);
