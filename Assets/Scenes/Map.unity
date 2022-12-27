@@ -1724,7 +1724,7 @@ GameObject:
   - component: {fileID: 683693392}
   m_Layer: 5
   m_Name: GameOver
-  m_TagString: Untagged
+  m_TagString: GameOver
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7755,6 +7755,7 @@ MonoBehaviour:
   shootDirection: {x: 0, y: 0, z: 0}
   ammo: 20
   ammoText: {fileID: 1413956852}
+  gameOverScreen: {fileID: 683693391}
 --- !u!114 &963194232
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,10 +17,12 @@ public class ShooterManager : MonoBehaviour
     [Header("Ammunition")]
     public int ammo = 20;
     public TextMeshProUGUI ammoText;
+
+    public GameObject gameOverScreen;
     // Start is called before the first frame update
     void Start()
     {
-       
+        
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class ShooterManager : MonoBehaviour
         {
             ShootBall();
         }*/
+        CheckAmmo();
         Shoot();
         
     }
@@ -64,6 +67,22 @@ public class ShooterManager : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+    public void CheckAmmo()
+    {
+        if (ammo <= 0)
+        {
+            ammo = 0;
+            gameOverScreen.SetActive(true);
+            Time.timeScale = 0;
+            this.enabled = false;
+        }
+        else
+        {
+            
+            Time.timeScale = 1;
+            this.enabled = true;
         }
     }
 }

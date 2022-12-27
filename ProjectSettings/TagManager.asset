@@ -7,6 +7,7 @@ TagManager:
   - Glass
   - Ball
   - AmmoGlass
+  - GameOver
   layers:
   - Default
   - TransparentFX
