@@ -29,6 +29,7 @@ public class PauseMenu : MonoBehaviour
                 
                 PauseGame();
                 Cursor.lockState = CursorLockMode.None;
+
                 //HUD.SetActive(false);
                 player.GetComponent<ShooterManager>().enabled = false;
             }
@@ -36,7 +37,9 @@ public class PauseMenu : MonoBehaviour
             {
                 ResumeGame();
                 Cursor.lockState = CursorLockMode.Locked;
+
                 player.GetComponent<ShooterManager>().enabled = true;
+                
             }
         }
     }
@@ -44,18 +47,18 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        player.GetComponent<ShooterManager>().enabled = false;
         Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void ResumeGame()
     {
+        player.GetComponent<ShooterManager>().enabled = true;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        // HUD.SetActive(true);
-        // Cam.GetComponent<CameraController>().enabled = true;
+       
     }
 
     public void RestartLevel()
@@ -68,7 +71,7 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("HusseinScene");
+        SceneManager.LoadScene("UI scene");
     }
 
     public void QuitGame()
